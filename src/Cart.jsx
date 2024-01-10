@@ -1,0 +1,89 @@
+import {NavLink} from "react-router-dom";
+import { TiDeleteOutline } from "react-icons/ti";
+import { FaArrowLeft } from "react-icons/fa";
+const Cart= ({cart,setcart,item,price}) => {
+const handleremove = (id) =>{
+  alert("want to remove this item")
+  const arr= cart.filter((data)=>data.id !== id);
+  setcart(arr);
+}
+const handleincrement = (item) =>{
+  setcart(cart=>
+    cart.map((data)=>
+    data.id === item ? {...data, quantity: data.quantity +(data.quantity <10 ) } :data
+    )
+    );
+   
+}
+const handledecrement = (item) =>{
+  setcart(cart=>
+    cart.map((data)=>
+    data.id === item ? {...data, quantity: data.quantity -(data.quantity >1 )} :data
+    )
+    );
+}
+    return(
+        <div className="cart-head">
+          <div className="cart-head1">
+          <table className="cart-table">
+          <tr className="table-head">
+        <h1>cart items</h1>
+        </tr>
+          <tr className="table-head1">
+                <td className="table-cell2"><h5> PRODUCT</h5></td>
+                <td className="table-cell1"><h5>PRICE</h5></td>
+                <td className="table-cell1"><h5> QUANTITY</h5></td>
+                <td className="table-cell1"><h5>SUB TOTAL</h5></td>
+              </tr>
+        {
+          cart.map((data) =>(
+            <tr className="table-row">
+            <td className="table-cell3">
+            <img className="table-img" src={data.image} key={data.id} alt={data.name} />
+            </td>
+            <td className="table-cell4">
+            <h4>{data.name}</h4> 
+            <h6>product description</h6> 
+            </td>
+            <td className="table-cell">
+            <h6>{data.price}</h6>
+            </td>
+            <td className="table-cell">
+              <button className="q-inc" onClick={()=>handleincrement(data.id)}>+</button><div className="quan">{data.quantity}</div><button className="q-dec" onClick={()=>handledecrement(data.id)}>-</button>
+            </td>
+            <td className="table-cell">
+              <h6>{data.quantity * data.price}</h6>
+              
+              </td>
+              <button className="remove" onClick={()=>handleremove(data.id)}><TiDeleteOutline /></button>
+            </tr>
+            
+          )
+          )
+        }
+        
+        </table>
+        <table className="summary">
+          <tr className="sum-1">
+           <h1>summary</h1>
+          </tr>
+          <tr className="sum-2">
+             <h5 className="firsth5">ITEMS: {item}</h5>
+             <h5 className="secondh5">COUPON CODE</h5>
+             <input className="firstin" type="text" />
+          </tr>
+          <tr className="sum-3">
+          <h5 className="thirdh5">TOTAL PRICE: {price}</h5>
+          </tr>
+          <tr className="sum-4">
+            <NavLink to="/cart/buy">
+            <button className="cout">checkout</button>
+            </NavLink>
+          </tr>
+          <h5 className="fourh5"><FaArrowLeft />  BACK TO SHOP</h5>
+        </table>
+        </div>
+        </div>
+    )
+}
+export default Cart
