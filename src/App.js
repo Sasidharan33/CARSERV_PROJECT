@@ -2,6 +2,7 @@ import './App.css';
 import Home from './Home';
 import About from './About';
 import './Style.css';
+import './mediaquerry.css';
 import './Animation.css'
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Service from './Service';

@@ -9,7 +9,6 @@ function Home1(){
         <Carousel theme="white">
         <Carousel.Item className='carou1'>
           <div>
-            <marquee behavior="" direction="left">balu</marquee>
           <img
             className="c1"
             src={c1}
