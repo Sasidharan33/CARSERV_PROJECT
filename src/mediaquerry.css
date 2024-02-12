@@ -6,6 +6,9 @@
     .navbar-toggler{
         margin-right: 2%;
     }
+    .cart-size{
+        display: none;
+    }
     .me-auto{
         margin-left: 0;
         text-align: left;
@@ -114,18 +117,128 @@
     }
     .about2{
         width: 100%;
-        height: 1100px;
+        height: 1000px;
     }
     .about2l{
         width: 84%;
         height: 400px;
     }
     .about2d{
-        width: 68%;
-        margin-left: 40%;
+        width: 48%;
+        margin-left: 62%;
     }
     .about2r{
         margin-top: 20px;
         width: 84%;
     }
+     .about2r-la{
+        width: 100%;
+     }
+     .serv1{
+        height: 600px;
+        background-size: cover;
+        background-repeat: no-repeat;
+     }
+     .serv1-1{
+        height: 100px;
+        margin: 30px 0 30px 0;
+        width: 100%;
+     }
+     .serv1-2{
+        width: 100%;
+        height: 100px;
+        margin: 0 0 30px 0;
+     }
+     .serv1-3{
+        width: 100%;
+        height: 100px;
+        margin: 0 0 30px 0;
+     }
+     .serv1-4{
+        width: 100%;
+        height: 100px;
+        margin: 0 0 30px 0;
+     }
+     .serv2{
+        height: 1300px;
+     }
+     .serv2-l{
+        width: 84%;
+        margin-bottom: 20px;
+     }
+     .serv2-m{
+        width: 84%;
+        margin:0 8% 20px 8%;
+     }
+     .serv2-r{
+        width: 84%;
+        margin:0 8% 20px 8%;
+     }
+     .book{
+        height: 980px;
+     }
+     .book-l{
+        width: 84%;
+        margin: 0 8% 0 8%;
+     }
+     .book-r{
+        width: 84%;
+        height: 540px;
+        margin: 0 8% 0 8%;
+     }
+     .input1{
+        width: 91%;
+        margin-right: 0;
+     }
+     .input2{
+        width: 91%;
+        margin-left: 0;
+     }
+     .technical{
+        height: 1900px;
+     }
+     .technical3{
+        width: 84%;
+        height: 420px;
+        margin-bottom: 20px;
+     }
+     .technical3 img{
+        height: 340px;
+     }
+     .tech1{
+        height: 340px;
+     }
+     .technical4{
+        width: 84%;
+        height: 420px;
+        margin:0 8% 20px 8%;
+     }
+     .technical4 img{
+        height: 340px;
+     }
+     .tech2{
+        height: 340px;
+     }
+     .technical5{
+        width: 84%;
+        height: 420px;
+        margin:0 8% 20px 8%;
+     }
+     .technical5 img{
+        height: 340px;
+     }
+     .tech3{
+        height: 340px;
+     }
+     .technical6{
+        width: 84%;
+        height: 420px;
+        margin:0 8% 20px 8%;
+     }
+     .technical6 img{
+        height: 340px;
+     }
+     .tech4{
+        height: 340px;
+     }
     }

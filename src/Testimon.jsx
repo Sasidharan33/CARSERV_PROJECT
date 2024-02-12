@@ -8,7 +8,19 @@ function Testimon(){
         <div className='testimon'>
         <div className='testimon1'><h5>// TESTIMONIAL //</h5></div>
         <div className='testimon2'><h1>Our Clients Say!</h1></div>
-        <OwlCarousel className='owl-theme' loop margin={10} center autoplay>
+        <OwlCarousel className='owl-theme' loop margin={10} center autoplay responsive={{0: {
+          items: 1,
+          nav: false
+        },
+        600: {
+          items: 3, // Display only one item for screens up to 600px wide
+          nav: false
+        },
+        1000: {
+          items: 3,
+          nav: true,
+          loop: false
+        }}}>
           <div class='item'>
             <div className='test'>
               <img  src={test1} alt="testimoniqal" />
