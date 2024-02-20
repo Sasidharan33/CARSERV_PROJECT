@@ -1,7 +1,9 @@
 @media (max-width: 600px){
     *{
-        margin-top: 0px;
-        margin-right: 0;
+       top: 0;
+       padding: 0;
+       box-sizing: border-box;
+       margin: 0;
     }
     .navbar-toggler{
         margin-right: 2%;
@@ -41,6 +43,9 @@
     }
     .navbari{
         margin-top: 0;
+        position: sticky;
+    }
+    .bg-body-tertiary{
         position: sticky;
     }
     .car1{
@@ -125,7 +130,7 @@
     }
     .about2d{
         width: 48%;
-        margin-left: 62%;
+        margin-left: 60%;
     }
     .about2r{
         margin-top: 20px;
@@ -133,6 +138,25 @@
     }
      .about2r-la{
         width: 100%;
+        height: 300px;
+     }
+     .about2r-la-1{
+       margin-bottom: 20px;
+     }
+     .about2r-la-2{
+        width: 80%;
+        height: 70px;
+     }
+     .about2r-la-3{
+        margin-bottom: 20px;
+     }
+     .about2r-la-4{
+        width: 80%;
+        height: 70px;
+     }
+     .about2r-la-6{
+        width: 80%;
+        height: 70px;
      }
      .serv1{
         height: 600px;
@@ -240,5 +264,193 @@
      }
      .tech4{
         height: 340px;
+     }
+     .pro video{
+        display: none;
+     }
+     .pro1{
+        display: none;
+     }
+     .pro-head{
+        width: 100%;
+        margin: 50px 0 0 0;
+     }
+     .pro-products1{
+        width: 20%;
+        margin: 200px 0 0 0;
+     }
+     .pro-products1a{
+        width: 80%;
+        margin: 200px 0 0 20%;
+     }
+     .pro-products2{
+        width: 20%;
+        margin: 320px 0 0 0;
+     }
+     .pro-products2a{
+        width: 80%;
+        margin: 320px 0 0 20%;
+     }
+     .pro-products3{
+        width: 20%;
+        margin: 440px 0 0 0;
+     }
+     .pro-products3a{
+        width: 80%;
+        margin: 440px 0 0 20%;
+     }
+     .pro-products4{
+        width: 20%;
+        margin: 560px 0 0 0;
+     }
+     .pro-products4a{
+        width: 80%;
+        margin: 560px 0 0 20%;
+     }
+     .pro-alert{
+        width: 80%;
+        height: 30px;
+        margin: 160px 0 0 20%;
+        color:white ;
+     }
+     .pro-head1b{
+        width: 27%;
+        margin-left: 5%;
+     }
+     .pro-head1a{
+        margin-left: 3%;
+     }
+     .contac{
+        height: 1200px;
+     }
+     .contac1{
+        width: 84%;
+        margin-left: 8%;
+     }
+     .contac2{
+        width: 84%;
+        margin-top: 0;
+        margin-left: 8%;
+     }
+     .contac3{
+        width: 84%;
+        margin-top: 0;
+        margin-left: 8%;
+     }
+     .contac4{
+        width: 84%;
+        margin-top: 0;
+        margin-left: 8%;
+     }
+     .contac5{
+        width: 84%;
+        margin-top: 0;
+        margin-left: 8%;
+     }
+     .contac5-a{
+        width: 100%;
+        margin-top: 0;
+        text-align: center;
+     }
+     .contac5-b{
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+     }
+     .contac5-ba{
+      float: left;
+     }
+     .contac5-b a{
+      float: left;
+     }
+     .login-main2 img{
+      display: none;
+     }
+     .logon{
+      width: 100%;
+     }
+     .cart-head{
+      height: 800px;
+     }
+     .cart-head1{
+      width: 100%;
+      border-radius: 0;
+      margin-left: 0;
+     }
+     .cart-head3{
+      display: block;
+     }
+     .cart-table{
+      width: 100%;
+      margin-left: 0;
+     }
+     .table-cell1{
+      width: 13%;
+      padding-left: 0;
+     }
+     .table-cell1-2{
+      width: 23%;
+      padding-left: 0;
+     }
+     .table-cell1-3{
+      width: 24%;
+      padding-left: 0;
+     }
+     .table-cell2{
+      width: 40%;
+     }
+     .table-cell3{
+      width: 21%;
+     }
+     .table-img{
+      padding-left: 10%;
+     }
+     .table-cell4{
+      width: 19%;
+     }
+     .table-cell-1{
+      width: 13%;
+     }
+     .table-cell-2{
+      width: 23%;
+      padding-left: 5px;
+     }
+     .table-cell-3{
+      width: 15%;
+     }
+     .summary{
+      display: none;
+     }
+     .sum-3{
+      position: absolute;
+      margin-top: 650px;
+     }
+     .sum-4{
+      position: absolute;
+      margin-top: 700px;
+     }
+     .buy-form{
+      height: 1900px;
+     }
+     .buy-form1{
+      width: 84%;
+     }
+     .buy-h2{
+      padding: 950px 0 0 8%;
+     }
+     .buy-form2{
+      width: 84%;
+      margin: 1000px 0 0 8%;
+     }
+     .buy-h3{
+      margin: 1420px 0 0 8%;
+     }
+     .buy-form3{
+      width: 84%;
+      margin: 1470px 0 0 8%;
+     }
+     .buy-h4{
+      width: 30%;
+      margin: 1790px 8% 0 62%;
      }
     }

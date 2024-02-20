@@ -11,10 +11,11 @@ import Testimon from './Testimon';
 import Contac from './Contac';
 import Home1 from './Home1';
 import Product from './Product';
+import Login from './Login';
 function Home({handleclick,warning}){
     return(
         
-        <div>
+        <div className='containerr'>
        <Home1/>
        <About1/>
        <About2/>

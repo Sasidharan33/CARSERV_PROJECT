@@ -4,7 +4,7 @@ import About from './About';
 import './Style.css';
 import './mediaquerry.css';
 import './Animation.css'
-import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { BrowserRouter,Routes,Route,Navigate } from 'react-router-dom';
 import Service from './Service';
 import Navbari from './Navbar';
 import Booking from './Booking';
@@ -25,8 +25,11 @@ import Product2 from './Product2';
 import Cart from './Cart';
 import { useState,useEffect } from 'react';
 import Buy from './Buy';
+import Login from './Login';
+import Signin from './Signin';
 
 function App(){
+  const[user,setuser] = useState(null);
   const[cart,setcart]=useState([])
   const [warning,setwarning]=useState(false)
   const[price,setprice]= useState(0)
@@ -82,14 +85,16 @@ function App(){
     <Navii/>
     <Navbari size={cart.length}/>
     <Routes>
-    <Route path='/' index element={<Home warning={warning} handleclick={handleclick}/>}/>
-    <Route path='/about' element={<About/>}/>
-    <Route path='/services' element={<Service/>}/>
-    <Route path='/booking' element={<Booking/>}/>
-    <Route path='/technicians' element={<Technicians/>}/>
-    <Route path='/testimonial' element={<Testimonial/>}/>
-    <Route path='/404' element={<Page404/>}/>
-    <Route path='/contact' element={<Contact/>}/>
+    <Route path='/' index element={user ?<Home warning={warning} handleclick={handleclick}/>:<Navigate to='/login'/>}/>
+    <Route exact path='/login' element={<Login user={user} setUser={setuser} />}/>
+    <Route path='/signin' element={!user ?<Signin/>:<Navigate to='/login'/>}/>
+    <Route path='/about' element={user?<About/>:<Navigate to='/login'/>}/>
+    <Route path='/services' element={user?<Service/>:<Navigate to='/login'/>}/>
+    <Route path='/booking' element={user?<Booking/>:<Navigate to='/login'/>}/>
+    <Route path='/technicians' element={user?<Technicians/>:<Navigate to='/login'/>}/>
+    <Route path='/testimonial' element={user?<Testimonial/>:<Navigate to='/login'/>}/>
+    <Route path='/404' element={user?<Page404/>:<Navigate to='/login'/>}/>
+    <Route path='/contact' element={user?<Contact/>:<Navigate to='/login'/>}/>
     <Route path='/about2' element={<About2/>}/>
     <Route path='/tech' element={<Technical/>}/>
     <Route path='/dia' element={<Home/>} />
@@ -100,7 +105,7 @@ function App(){
     <Route path='/products/alloys' element={<Product0 warning={warning} handleclick={handleclick} />}/>
     <Route path='/products/spoilers' element={<Product1 warning={warning} handleclick={handleclick}/>}/>
     <Route path='/products/exhaust' element={<Product2 warning={warning} handleclick={handleclick}/>}/>
-    <Route path='/cart' element={<Cart item={item} price={price} handlechange={handlechange} setcart={setcart} warning={warning} cart={cart}/>}/>
+    <Route path='/cart' element={user?<Cart item={item} price={price} handlechange={handlechange} setcart={setcart} warning={warning} cart={cart}/>:<Navigate to='/login'/>}/>
     <Route path='/cart/buy' element={<Buy item={item} price={price} cart={cart}/>}/>
     </Routes>
     </BrowserRouter> 

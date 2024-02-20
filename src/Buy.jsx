@@ -105,7 +105,7 @@ function Buy({item,price,cart}){
         </div>
         <div className="usercontact">
         <div className="usercontac1">
-        <label htmlFor="" className="lab4"><h5>Contact Number *</h5></label><br/>
+        <label htmlFor="" className="lab4"><h5>phone *</h5></label><br/>
         <input type="text" 
         name="phone" 
         value={values.phone}  

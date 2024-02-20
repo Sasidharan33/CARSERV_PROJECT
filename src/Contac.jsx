@@ -56,7 +56,7 @@ function Contac(){
             <a href="" className="contac5-ba">Home</a>
             <a href="" className="contac5-ba">Cookies</a>
             <a href="" className="contac5-ba">Help</a>
-            <a href="">FQAS</a>
+            <a href="">FAQS</a>
             </div>
           </div>
       </div>    

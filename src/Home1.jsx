@@ -6,7 +6,7 @@ import car2 from './images/carousel-2.png'
 import { FaArrowRight } from "react-icons/fa";
 function Home1(){
     return(
-        <Carousel theme="white">
+        <Carousel className='homii' theme="white">
         <Carousel.Item className='carou1'>
           <div>
           <img

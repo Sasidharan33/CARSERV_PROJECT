@@ -9,7 +9,6 @@ import { NavLink } from 'react-router-dom';
 function Equip(){
     return(
         <div  className="equip"> 
-        
         <h5>// MODERN EQUIPMENTS //</h5>
         <div  className="equip1">
             <h1> Automotive equipment</h1>

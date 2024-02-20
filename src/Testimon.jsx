@@ -18,8 +18,7 @@ function Testimon(){
         },
         1000: {
           items: 3,
-          nav: true,
-          loop: false
+          loop: true
         }}}>
           <div class='item'>
             <div className='test'>

@@ -30,10 +30,10 @@ const handledecrement = (item) =>{
         <h1>cart items</h1>
         </tr>
           <tr className="table-head1">
-                <td className="table-cell2"><h5> PRODUCT</h5></td>
-                <td className="table-cell1"><h5>PRICE</h5></td>
-                <td className="table-cell1"><h5> QUANTITY</h5></td>
-                <td className="table-cell1"><h5>SUB TOTAL</h5></td>
+                <td className="table-cell2"><h6> PRODUCT</h6></td>
+                <td className="table-cell1"><h6>PRICE</h6></td>
+                <td className="table-cell1-2"><h6> QUANTITY</h6></td>
+                <td className="table-cell1-3"><h6>SUB TOTAL</h6></td>
               </tr>
         {
           cart.map((data) =>(
@@ -43,15 +43,15 @@ const handledecrement = (item) =>{
             </td>
             <td className="table-cell4">
             <h4>{data.name}</h4> 
-            <h6>product description</h6> 
+            <h6>product details</h6> 
             </td>
-            <td className="table-cell">
+            <td className="table-cell-1">
             <h6>{data.price}</h6>
             </td>
-            <td className="table-cell">
+            <td className="table-cell-2">
               <button className="q-inc" onClick={()=>handleincrement(data.id)}>+</button><div className="quan">{data.quantity}</div><button className="q-dec" onClick={()=>handledecrement(data.id)}>-</button>
             </td>
-            <td className="table-cell">
+            <td className="table-cell-3">
               <h6>{data.quantity * data.price}</h6>
               
               </td>
@@ -83,6 +83,16 @@ const handledecrement = (item) =>{
           <h5 className="fourh5"><FaArrowLeft />  BACK TO SHOP</h5>
         </table>
         </div>
+        <div className="cart-head3">
+        <tr className="sum-3">
+          <h5 className="thirdh5">TOTAL PRICE: {price}</h5>
+          </tr>
+          <tr className="sum-4">
+            <NavLink to="/cart/buy">
+            <button className="cout">checkout</button>
+            </NavLink>
+          </tr>
+          </div>
         </div>
     )
 }
