@@ -27,13 +27,23 @@ import { useState,useEffect } from 'react';
 import Buy from './Buy';
 import Login from './Login';
 import Signin from './Signin';
+import Product from './Product';
 
 function App(){
+  const [data,setdata] = useState([])
   const[user,setuser] = useState(null);
   const[cart,setcart]=useState([])
   const [warning,setwarning]=useState(false)
   const[price,setprice]= useState(0)
   const[item,setitem]=useState(0)
+  useEffect(() => {
+  const fetchdata = () =>{
+   const cartdata = window.localStorage.getItem('cartdata');
+   const Cart = JSON.parse(cartdata)
+   setcart(Cart)
+  }
+  fetchdata();
+},[])
   const handleitem =()=>{
     let ite=0;
     cart.map((data)=>(
@@ -66,7 +76,7 @@ function App(){
     return;
     }
     setcart([...cart,data])
-    
+    window.localStorage.setItem('cartdata',JSON.stringify([...cart,data]))
   }
   const handlechange= (item,d)=>{
     let ind= -1;
@@ -83,9 +93,9 @@ function App(){
     <div className="App">
     <BrowserRouter>
     <Navii/>
-    <Navbari size={cart.length}/>
+    <Navbari user={user} setUser={setuser} size={cart.length}/>
     <Routes>
-    <Route path='/' index element={user ?<Home warning={warning} handleclick={handleclick}/>:<Navigate to='/login'/>}/>
+    <Route path='/' index element={user ?<Home data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>:<Navigate to='/login'/>}/>
     <Route exact path='/login' element={<Login user={user} setUser={setuser} />}/>
     <Route path='/signin' element={!user ?<Signin/>:<Navigate to='/login'/>}/>
     <Route path='/about' element={user?<About/>:<Navigate to='/login'/>}/>
@@ -97,16 +107,16 @@ function App(){
     <Route path='/contact' element={user?<Contact/>:<Navigate to='/login'/>}/>
     <Route path='/about2' element={<About2/>}/>
     <Route path='/tech' element={<Technical/>}/>
-    <Route path='/dia' element={<Home/>} />
-    <Route path='/eng' element={<Serv2eng/>}/>
-    <Route path='/tir' element={<Serv2tir/>}/>
-    <Route path='/oil' element={<Serv2oil/>}/>
+    <Route path='/dia' element={<Home data={data} setdata={setdata}/>} />
+    <Route path='/eng' element={<Serv2eng data={data} setdata={setdata} />}/>
+    <Route path='/tir' element={<Serv2tir data={data} setdata={setdata}/>}/>
+    <Route path='/oil' element={<Serv2oil data={data} setdata={setdata}/>}/>
     <Route path='/equip' element={<Equip/>}/>
-    <Route path='/products/alloys' element={<Product0 warning={warning} handleclick={handleclick} />}/>
-    <Route path='/products/spoilers' element={<Product1 warning={warning} handleclick={handleclick}/>}/>
-    <Route path='/products/exhaust' element={<Product2 warning={warning} handleclick={handleclick}/>}/>
+    <Route path='/products/alloys' element={<Product0 data={data} setdata={setdata} warning={warning} handleclick={handleclick} />}/>
+    <Route path='/products/spoilers' element={<Product1 data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>}/>
+    <Route path='/products/exhaust' element={<Product2 data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>}/>
     <Route path='/cart' element={user?<Cart item={item} price={price} handlechange={handlechange} setcart={setcart} warning={warning} cart={cart}/>:<Navigate to='/login'/>}/>
-    <Route path='/cart/buy' element={<Buy item={item} price={price} cart={cart}/>}/>
+    <Route path='/cart/buy' element={cart?<Buy item={item} setprice={setprice} setitem={setitem} setcart={setcart} price={price} cart={cart}/>:<Navigate to='/cart'/>}/>
     </Routes>
     </BrowserRouter> 
     </div>

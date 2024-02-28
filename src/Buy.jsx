@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 import { useFormik } from "formik";
+import { useEffect } from 'react';
 
 const schema = yup.object().shape({
     firstname:yup
@@ -35,29 +36,37 @@ const schema = yup.object().shape({
     postal_zip:yup 
     .number()
     .required('postal/zip code is required')
-    .min(6,'postal/zip code must be 6 characters long')
+    .min(6,'postal/zip code must be 6 characters long'),
+    payment:yup 
+    .string()
+    .oneOf(["cash on delivery","upi/paypal","credit/debit card","emi"],'must select one of the payment method')
 })
 
 function Buy({item,price,cart}){
     const {values,handleChange,handleBlur,handleSubmit,errors} = useFormik({
         initialValues:{
             firstname:'',
-            firstname:'',
             lastname:'',
             phone:'',
             gmail:'',
             ordernote:'',
+            items:item,
+            tprice:price,
+            payment:'',
+            products:[cart],
+            address:[{
             country:'',
             building:'',
             streetname:'',
             city_village:'',
             district:'',
             postal_zip:''
+            }]
 
         },
         validationSchema:schema,
         onSubmit: (values) => {
-             console.log(values)
+             console.log("clicked",values)
              setTimeout(values='',1000);    
         }
     })
@@ -66,10 +75,11 @@ function Buy({item,price,cart}){
     
     return(
         <div className="buy-form">
+            <form onSubmit={handleSubmit} >
             <h1 className="buy-h1">Billing Details</h1>
             <h1 className="buy-h2">Order Summary</h1>
             <div className="buy-form1">
-     <form onSubmit={handleSubmit} >
+     
      <label htmlFor="" className="lab1"><h5>Country *</h5></label><br/>
         <input type="text"
          name="country"
@@ -198,8 +208,8 @@ function Buy({item,price,cart}){
         onChange={handleChange}
         onBlur={handleBlur}
         /><br />
-        <button type="submit">submit</button>
-     </form>
+        <button >submit</button>
+     
      </div>
      <div className="buy-form2">
         <table className="buy-table1">
@@ -215,9 +225,9 @@ function Buy({item,price,cart}){
         
                 <tbody>
                 <tr className="buy-table">
-                    <td className="buy-cell"><h5>{data.name} </h5></td>
-                    <td className="buy-cell2"><h5>{data.quantity}</h5></td>
-                    <td className="buy-cell1"><h5>{data.quantity * data.price}</h5></td>
+                    <td className="buy-cell"><h5 key={data.id}>{data.name} </h5></td>
+                    <td className="buy-cell2"><h5 key={data.id}>{data.quantity}</h5></td>
+                    <td className="buy-cell1"><h5 key={data.id}>{data.quantity * data.price}</h5></td>
                 </tr>
                 </tbody>
                 
@@ -227,12 +237,12 @@ function Buy({item,price,cart}){
                 <tr className="buy-table2">
                     <td className="buy-cell2"></td>
                     <td className="buy-cell"><h5> Total Items</h5></td>
-                    <td className="buy-cell1"><h5>{item}</h5></td>
+                    <td name='items' className="buy-cell1"><h5>{item}</h5></td>
                 </tr>
                 <tr className="buy-table2">
                 <td className="buy-cell2"></td>
                     <td className="buy-cell"><h5> Order Total</h5></td>
-                    <td className="buy-cell1"><h5>{price}</h5></td>
+                    <td name='tprice' className="buy-cell1"><h5>{price}</h5></td>
                 </tr>
                 </tfoot>
                 </table>
@@ -241,11 +251,20 @@ function Buy({item,price,cart}){
      </div>
      <h1 className="buy-h3">PAYMENT</h1>
      <div className="buy-form3">
-       
+       <input type="radio" name='payment' onChange={handleChange} onBlur={handleBlur} value="cash on delivery"  /> 
+       <label htmlFor="cod"><h2>Cash On Delivery</h2></label><br />
+       <input type="radio" name='payment' onChange={handleChange} onBlur={handleBlur} value="upi/paypal" />
+       <label htmlFor="upi"><h2>Upi/Paypal</h2></label><br />
+       <input type="radio" name='payment' onChange={handleChange} onBlur={handleBlur} value="credit/debit card" />
+       <label htmlFor="c/d"><h2>Credit/Debit Card</h2></label><br />
+       <input type="radio" name='payment' onChange={handleChange} onBlur={handleBlur} value="emi" />
+       <label htmlFor="c/d"><h2>EMI</h2></label><br />
+       <p className="valide">{errors.payment}</p>
      </div>
-     <button className="buy-h4">
+     <button type="submit" className="buy-h4">
      <h3>Buy Now</h3>
      </button>
+     </form>
         </div>
     )
 }

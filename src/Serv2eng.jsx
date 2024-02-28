@@ -14,7 +14,7 @@ import Technical from "./Technical";
 import Testimon from "./Testimon";
 import Contac from "./Contac";
 import Product from "./Product"
-function Serv2eng(){
+function Serv2eng({data,setdata}){
     return(
         <div>
             <Home1/>
@@ -63,7 +63,7 @@ function Serv2eng(){
       <Book/>
       <Technical/>
       <Testimon/>
-      <Product/>
+      <Product data={data} setdata={setdata}/>
       <Contac/>
 </div>
     )

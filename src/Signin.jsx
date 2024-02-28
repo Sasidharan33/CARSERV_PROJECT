@@ -30,7 +30,7 @@ function Signin() {
     validationSchema:schema,
     onSubmit:async (values) => {
       try{
-      const res = await axios.post('http://localhost:3002/api/users',values);
+      const res = await axios.post('https://carservbe.onrender.com/api/users',values);
       if(res.statusText='OK'){
         console.log(res)
         setregisterd(true)

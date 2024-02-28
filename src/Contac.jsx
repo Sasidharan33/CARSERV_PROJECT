@@ -48,7 +48,7 @@ function Contac(){
           <h4>Newsletter</h4>
           <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
           <input type="text" placeholder='Your email'></input>
-          <button>SIGNUP</button>
+          <button className="contac-signup">SIGNUP</button>
           </div>
           <div className="contac5"> 
           <div className="contac5-a"><h6><a href="">Your Site Name</a>All Right Reserved. Designed By <a href="">HTML Codex</a></h6></div>

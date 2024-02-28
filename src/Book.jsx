@@ -1,10 +1,29 @@
 import React, { useEffect } from 'react';
 import './Style.css'
+import { Formik, useFormik } from 'formik';
+import axios from 'axios';
 function Book(){
-    useEffect(() => {
-      const bookR = document.querySelector('.book-r');
-      bookR.classList.add('animate-once');
-    }, []);
+    const {values,handleChange,handleSubmit} = useFormik({
+      initialValues:{
+      name:'',
+      email:'',
+      service:'',
+      date:'',
+      request:''
+      },
+      onSubmit: async (values) => {
+         try{
+            const res = await axios.post('https://carservbe.onrender.com/api/booking',values)
+            console.log(res)
+            setTimeout(values.name='',values.email='',values.service='',values.date='',values.request='',1000)
+            alert('booked successfully')
+         }
+         catch(err){
+           console.log(err)
+         }
+      }
+
+    })
     return(
         <div className='book'>
         <div className='book-l'>
@@ -16,12 +35,19 @@ function Book(){
         </div>
         <div className='book-r'>
           <h1>Book For A Service</h1>
-          <input className='input1' type="text" placeholder='Your Name' />
-          <input className='input2' type="email" placeholder='Your Email' />
-          <input className='input1' type="text" />
-          <input className='input2' type="date" placeholder='Service Date' />
-          <input className='input3' type="text" placeholder='Special Request'/>
-          <button>BOOK NOW</button>
+          <form action="" onSubmit={handleSubmit}>
+          <input className='input1' onChange={handleChange} name='name' value={values.name} type="text" placeholder='Your Name' />
+          <input className='input2' onChange={handleChange} name='email' value={values.email} type="email" placeholder='Your Email' />
+          <select name='service' value={values.service} onChange={handleChange}  className='input1' >
+            <option selected>select a service</option>
+            <option value='service 3'>service 1</option>
+            <option value='service 2'>service 2</option>
+            <option value='service 3'>service 3</option>
+          </select>
+          <input onChange={handleChange} value={values.date} name='date' className='input2' type="date" placeholder='Service Date' />
+          <input onChange={handleChange} value={values.request} name='request' className='input3' type="text" placeholder='Special Request'/>
+          <button type='submit'>BOOK NOW</button>
+          </form>
         </div>
 </div>
     )

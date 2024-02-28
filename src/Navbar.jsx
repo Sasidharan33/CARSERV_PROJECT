@@ -20,12 +20,9 @@ function Navbari({size}){
           <NavLink to="/booking" className="dlink"><NavDropdown.Item href="#action/3.1" className='dli'>BOOKING</NavDropdown.Item></NavLink>
           <NavLink to='/technicians' className="dlink"><NavDropdown.Item href="#action/3.2" className='dli'>TECHNICIANS</NavDropdown.Item></NavLink>
           <NavLink to="/testimonial" className="dlink"><NavDropdown.Item href="#action/3.3" className='dli'> TESTIMONIAL</NavDropdown.Item></NavLink>
-          <NavLink className="dlink" to="/404">
-          <NavDropdown.Item href="#action/3.4" className='dli'>404 Page</NavDropdown.Item>
-          </NavLink>
         </NavDropdown>
         <NavLink className='contact' to="/contact" >CONTACT</NavLink>
-        
+        {/* <NavLink  to="/contact" >PRODUCTS</NavLink> */}
         <NavLink to='/cart' className='cart-link'>
         <div className='nav-cart'>
            CART<IoMdCart /><div className='cart-size'>{size}</div>

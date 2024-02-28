@@ -12,7 +12,7 @@ import Contac from './Contac';
 import Home1 from './Home1';
 import Product from './Product';
 import Login from './Login';
-function Home({handleclick,warning}){
+function Home({handleclick,warning,data,setdata}){
     return(
         
         <div className='containerr'>
@@ -24,7 +24,7 @@ function Home({handleclick,warning}){
       <Book/>
       <Technical/>
       <Testimon/>
-      <Product warning={warning} handleclick={handleclick}/>
+      <Product data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>
       <Contac/>
        </div>
         

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import l1 from './images/l1car.avif'
 import * as yup from 'yup';
 import { useFormik } from 'formik';
@@ -21,6 +21,14 @@ const schema = yup.object().shape({
 })
 const Login = ({user,setUser}) => {
    const[token,settoken] = useState(null);
+   useEffect(() => {
+    const loggedinuser = window.localStorage.getItem('loggedinuser');
+    if(loggedinuser){
+    const user = JSON.parse(loggedinuser)
+    setUser(user);
+    settoken(user.token)
+    }
+   },[])
    const {values,handleChange,handleBlur,handleSubmit,errors} = useFormik({
     initialValues:{
       username:'',
@@ -30,12 +38,11 @@ const Login = ({user,setUser}) => {
     validationSchema:schema,
     onSubmit:async (values) => {
       try{
-        const res = await axios.post('http://localhost:3002/api/login',values);
+        const res = await axios.post('https://carservbe.onrender.com/api/login',values);
         const user = res.data;
         settoken(user.token);
         setUser(user)
         window.localStorage.setItem('loggedinuser',JSON.stringify(user));
-        console.log('logged in successfully')
         setTimeout(values.username='',
         values.email='',
         values.password='',1000)

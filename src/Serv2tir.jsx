@@ -14,7 +14,7 @@ import Technical from "./Technical";
 import Testimon from "./Testimon";
 import Contac from "./Contac";
 import Product from "./Product"
-function Serv2tir(){
+function Serv2tir({data,setdata}){
     return(
         <div>
         <Home1/>
@@ -63,7 +63,7 @@ function Serv2tir(){
   <Book/>
   <Technical/>
   <Testimon/>
-  <Product/>
+  <Product data={data} setdata={setdata}/>
   <Contac/>
 </div>
     )

@@ -2,10 +2,12 @@ import {NavLink} from "react-router-dom";
 import { TiDeleteOutline } from "react-icons/ti";
 import { FaArrowLeft } from "react-icons/fa";
 const Cart= ({cart,setcart,item,price}) => {
+  
 const handleremove = (id) =>{
   alert("want to remove this item")
   const arr= cart.filter((data)=>data.id !== id);
   setcart(arr);
+  window.localStorage.setItem('cartdata',JSON.stringify(arr));
 }
 const handleincrement = (item) =>{
   setcart(cart=>
@@ -16,6 +18,7 @@ const handleincrement = (item) =>{
    
 }
 const handledecrement = (item) =>{
+  console.log(item)
   setcart(cart=>
     cart.map((data)=>
     data.id === item ? {...data, quantity: data.quantity -(data.quantity >1 )} :data

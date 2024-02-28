@@ -14,7 +14,7 @@ import Technical from "./Technical";
 import Testimon from "./Testimon";
 import Contac from "./Contac";
 import Product from "./Product"
-function Serv2oil(){
+function Serv2oil({data,setdata}){
     return(
 <div>
             <Home1/>
@@ -63,7 +63,7 @@ function Serv2oil(){
       <Book/>
       <Technical/>
       <Testimon/>
-      <Product/>
+      <Product data={data} setdata={setdata}/>
       <Contac/>
 </div>
     )
