@@ -7,8 +7,8 @@ function Testimonial(){
          <div className="about-nav">
            <h1>Testimonial</h1>
            <ol>
-            <li><a href="">HOME/</a></li>
-            <li><a href="">PAGES/</a></li>
+            <li><a >HOME/</a></li>
+            <li><a >PAGES/</a></li>
             <li>ABOUT</li>
            </ol>
            </div>

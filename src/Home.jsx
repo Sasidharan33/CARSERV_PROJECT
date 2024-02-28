@@ -11,7 +11,6 @@ import Testimon from './Testimon';
 import Contac from './Contac';
 import Home1 from './Home1';
 import Product from './Product';
-import Login from './Login';
 function Home({handleclick,warning,data,setdata}){
     return(
         
