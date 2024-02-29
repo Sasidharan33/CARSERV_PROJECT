@@ -13,7 +13,15 @@ import Technical from './Technical';
 import Book from './Book';
 import Testimon from './Testimon';
 import Contac from './Contac';
-function Product2({handleclick,warning,data}){
+function Product2({handleclick,warning,data,loading}){
+    if(loading){
+        return(
+            <div>loading...</div>
+        )
+    }
+    else{
+
+    
     
     return(
         <div>
@@ -116,5 +124,6 @@ function Product2({handleclick,warning,data}){
         <Contac/>
         </div>
     )
+    }
 }
 export default Product2

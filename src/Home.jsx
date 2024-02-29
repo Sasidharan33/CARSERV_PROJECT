@@ -11,9 +11,14 @@ import Testimon from './Testimon';
 import Contac from './Contac';
 import Home1 from './Home1';
 import Product from './Product';
-function Home({handleclick,warning,data,setdata}){
+function Home({handleclick,warning,data,setdata,loading}){
+    if(loading){
+        return(
+            <div>loading...</div>
+        )
+    }
+    else{
     return(
-        
         <div className='containerr'>
        <Home1/>
        <About1/>
@@ -23,10 +28,11 @@ function Home({handleclick,warning,data,setdata}){
       <Book/>
       <Technical/>
       <Testimon/>
-      <Product data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>
+      <Product loading={loading} data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>
       <Contac/>
        </div>
         
     )
+    }
 }
 export default Home

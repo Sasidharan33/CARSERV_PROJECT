@@ -29,6 +29,7 @@ import Login from './Login';
 import Signin from './Signin';
 import axios from 'axios';
 function App(){
+  const [loading, setLoading] = useState(true);
   const [data,setdata] = useState(null)
   const[user,setuser] = useState(null);
   const[cart,setcart]=useState([])
@@ -40,22 +41,24 @@ function App(){
    const cartdata = window.localStorage.getItem('cartdata');
    const Cart = JSON.parse(cartdata)
    setcart(Cart)
-//    try{
-//     const productData = window.localStorage.getItem('productdata');
-//       if (productData) {
-//         const data = JSON.parse(productData);
-//         setdata(data);
-//         console.log(data)
-//       } else {
-//         const res = await axios.get('https://carservbe.onrender.com/api/products');
-//         const newData = res.data;
-//         setdata(newData);
-//         window.localStorage.setItem('productdata', JSON.stringify(newData));
-//       }
-//  }
-//  catch(err){
-//   console.log("error in data fetching",err)
-//  }
+   try{
+    const productData = window.localStorage.getItem('productdata');
+      if (productData) {
+        const data = JSON.parse(productData);
+        setdata(data);
+        setLoading(false);
+        console.log(data)
+      } else {
+        const res = await axios.get('https://carservbe.onrender.com/api/products');
+        const newData = res.data;
+        setdata(newData);
+        setLoading(false);
+        window.localStorage.setItem('productdata', JSON.stringify(newData));
+      }
+ }
+ catch(err){
+  console.log("error in data fetching",err)
+ }
   }
   fetchdata();
 }, [])
@@ -110,7 +113,7 @@ function App(){
     <Navii/>
     <Navbari user={user} setUser={setuser} size={cart.length}/>
     <Routes>
-    <Route path='/' index element={user ?<Home data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>:<Navigate to='/login'/>}/>
+    <Route path='/' index element={user ?<Home data={data} loading={loading} setdata={setdata} warning={warning} handleclick={handleclick}/>:<Navigate to='/login'/>}/>
     <Route exact path='/login' element={<Login user={user} setUser={setuser} />}/>
     <Route path='/signin' element={!user ?<Signin/>:<Navigate to='/login'/>}/>
     <Route path='/about' element={user?<About/>:<Navigate to='/login'/>}/>
@@ -128,8 +131,8 @@ function App(){
     <Route path='/oil' element={<Serv2oil data={data} setdata={setdata}/>}/>
     <Route path='/equip' element={<Equip/>}/>
     <Route path='/products/alloys' element={<Product0 data={data} setdata={setdata} warning={warning} handleclick={handleclick} />}/>
-    <Route path='/products1' element={<Product1 data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>}/>
-    <Route path='/products2' element={<Product2 data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>}/>
+    <Route path='/products1' element={<Product1 loading={loading} data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>}/>
+    <Route path='/products2' element={<Product2 loading={loading} data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>}/>
     <Route path='/cart' element={user?<Cart item={item} price={price} handlechange={handlechange} setcart={setcart} warning={warning} cart={cart}/>:<Navigate to='/login'/>}/>
     <Route path='/cart/buy' element={cart?<Buy item={item} setprice={setprice} setitem={setitem} setcart={setcart} price={price} cart={cart}/>:<Navigate to='/cart'/>}/>
     </Routes>

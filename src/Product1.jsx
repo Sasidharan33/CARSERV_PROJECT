@@ -13,7 +13,13 @@ import Technical from './Technical';
 import Book from './Book';
 import Testimon from './Testimon';
 import Contac from './Contac';
-function Product1({handleclick,warning,data}){
+function Product1({handleclick,warning,data,loading}){
+    if(loading){
+        return(
+            <div>loading...</div>
+        )
+    }
+    else{
     return(
         <div>
             <Home1/>
@@ -37,7 +43,6 @@ function Product1({handleclick,warning,data}){
             <div className='pro-head1b'><NavLink to='/products1' className='pro-head2a'><h2 className='sl'>SPOILERS</h2></NavLink></div>
             <div className='pro-head1c'><NavLink to='/products2' className='pro-head2b'><h2 className='el'>EXHAUST</h2></NavLink></div>
          </div>
-        
             <>
              <div className='pro-products1'> 
          <img key={data.product[4].id} src={data.product[4].image} alt="alloy14" />
@@ -112,5 +117,6 @@ function Product1({handleclick,warning,data}){
         <Contac/>
         </div>
     )
+        }
 }
 export default Product1

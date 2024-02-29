@@ -5,8 +5,13 @@ import {NavLink} from "react-router-dom";
 import { IoMdCart } from "react-icons/io";
 import { FaShoppingBag } from "react-icons/fa";
 
-function Product ({handleclick,warning,data}){
-
+function Product ({handleclick,warning,data,loading}){
+  if(loading){
+    return(
+        <div>loading...</div>
+    )
+  }
+  else{
 
     return(
 
@@ -23,7 +28,6 @@ function Product ({handleclick,warning,data}){
             <div className='pro-head1b'><NavLink to='/products1' className='pro-head2a'><h2 className='sl'>SPOILERS</h2></NavLink></div>
             <div className='pro-head1c'><NavLink to='/products2' className='pro-head2b'><h2 className='el'>EXHAUST</h2></NavLink></div>
          </div>
-         {data.product && data.product.length > 0 &&(
             <>
             <div className='pro-products1'> 
          <img key={data.product[0].id} src={data.product[0].image} alt="alloy14" />
@@ -93,11 +97,9 @@ function Product ({handleclick,warning,data}){
                 </div>
             </NavLink>
               </div>
-              </>
-         )}
-         
-         
+              </> 
         </div>
     )
+        }
 }
 export default Product
