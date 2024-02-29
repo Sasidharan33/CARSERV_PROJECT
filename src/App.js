@@ -59,7 +59,7 @@ function App(){
  }
   }
   fetchdata();
-},[])
+}, [])
   const handleitem =()=>{
     let ite=0;
     cart.map((data)=>(
