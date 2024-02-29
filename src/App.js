@@ -29,7 +29,7 @@ import Login from './Login';
 import Signin from './Signin';
 import axios from 'axios';
 function App(){
-  const [data,setdata] = useState([])
+  const [data,setdata] = useState(null)
   const[user,setuser] = useState(null);
   const[cart,setcart]=useState([])
   const [warning,setwarning]=useState(false)
