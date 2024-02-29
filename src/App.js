@@ -40,22 +40,22 @@ function App(){
    const cartdata = window.localStorage.getItem('cartdata');
    const Cart = JSON.parse(cartdata)
    setcart(Cart)
-   try{
-    const productData = window.localStorage.getItem('productdata');
-      if (productData) {
-        const data = JSON.parse(productData);
-        setdata(data);
-        console.log(data)
-      } else {
-        const res = await axios.get('https://carservbe.onrender.com/api/products');
-        const newData = res.data;
-        setdata(newData);
-        window.localStorage.setItem('productdata', JSON.stringify(newData));
-      }
- }
- catch(err){
-  console.log("error in data fetching",err)
- }
+//    try{
+//     const productData = window.localStorage.getItem('productdata');
+//       if (productData) {
+//         const data = JSON.parse(productData);
+//         setdata(data);
+//         console.log(data)
+//       } else {
+//         const res = await axios.get('https://carservbe.onrender.com/api/products');
+//         const newData = res.data;
+//         setdata(newData);
+//         window.localStorage.setItem('productdata', JSON.stringify(newData));
+//       }
+//  }
+//  catch(err){
+//   console.log("error in data fetching",err)
+//  }
   }
   fetchdata();
 }, [])
