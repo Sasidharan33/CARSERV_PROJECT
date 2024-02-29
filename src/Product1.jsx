@@ -1,6 +1,6 @@
 import cc1 from './images/bal.mp4'
 import { IoCarSport } from "react-icons/io5";
-import React, { useEffect } from 'react';
+import React,{useEffect} from 'react';
 import {NavLink} from "react-router-dom";
 import { IoMdCart } from "react-icons/io";
 import { FaShoppingBag } from "react-icons/fa";
@@ -16,17 +16,22 @@ import Contac from './Contac';
 import axios from 'axios';
 function Product1({handleclick,warning,data,setdata}){
     useEffect(() => {
-    const fetchdata = async() => {
+        const fetchdata = async () => {
         try{
-        const res = await axios.get('https://carservbe.onrender.com/api/products')
-        setdata(res.data)
-        }
+      const productData = window.localStorage.getItem('productdata');
+      if (productData) {
+        const data = JSON.parse(productData);
+        setdata(data);
+        console.log(data)
+      } 
+    }
         catch(err){
-            console.log(err)
+            console.log("error in fetch data",err)
         }
     }
-    fetchdata();
+    fetchdata()
     },[])
+ 
     return(
         <div>
             <Home1/>
@@ -46,14 +51,14 @@ function Product1({handleclick,warning,data,setdata}){
          <h1><IoCarSport className='caa1'/>CarServ</h1>
          </div>
          <div className='pro-head'>
-            <div className='pro-head1a'><NavLink to='/products/alloys' className='pro-head2'><h2 className='al'>ALLOYS</h2></NavLink></div>
-            <div className='pro-head1b'><NavLink to='/products/spoilers' className='pro-head2a'><h2 className='sl'>SPOILERS</h2></NavLink></div>
-            <div className='pro-head1c'><NavLink to='/products/exhaust' className='pro-head2b'><h2 className='el'>EXHAUST</h2></NavLink></div>
+            <div className='pro-head1a'><NavLink to='/' className='pro-head2'><h2 className='al'>ALLOYS</h2></NavLink></div>
+            <div className='pro-head1b'><NavLink to='/products1' className='pro-head2a'><h2 className='sl'>SPOILERS</h2></NavLink></div>
+            <div className='pro-head1c'><NavLink to='/products2' className='pro-head2b'><h2 className='el'>EXHAUST</h2></NavLink></div>
          </div>
-        {data && data.product.length > 0 &&(
+        
             <>
              <div className='pro-products1'> 
-         <img src={data.product[4].image} alt="alloy14" />
+         <img key={data.product[4].id} src={data.product[4].image} alt="alloy14" />
           </div>
          <div className='pro-products1a'>
             <h5>NAME: {data.product[4].name}</h5>
@@ -70,7 +75,7 @@ function Product1({handleclick,warning,data,setdata}){
             </NavLink>
               </div>
          <div className='pro-products2'>
-         <img src={data.product[5].image} alt="alloy16" />
+         <img key={data.product[5].id} src={data.product[5].image} alt="alloy16" />
               </div>
          <div className='pro-products2a'>
          <h5>NAME: {data.product[5].name}</h5>
@@ -87,7 +92,7 @@ function Product1({handleclick,warning,data,setdata}){
             </NavLink>
               </div>
          <div className='pro-products3'>
-         <img src={data.product[6].image} alt="alloy14" /> 
+         <img key={data.product[6].id} src={data.product[6].image} alt="alloy14" /> 
               </div>
          <div className='pro-products3a'>
          <h5>NAME: {data.product[6].name}</h5>
@@ -104,7 +109,7 @@ function Product1({handleclick,warning,data,setdata}){
             </NavLink>
          </div>
          <div className='pro-products4'>
-         <img src={data.product[7].image} alt="alloy14" />
+         <img key={data.product[7].id} src={data.product[7].image} alt="alloy14" />
               </div>
          <div className='pro-products4a'>
          <h5>NAME: {data.product[7].name}</h5>
@@ -121,7 +126,6 @@ function Product1({handleclick,warning,data,setdata}){
             </NavLink>
               </div>
             </>
-        )}
         </div>
         <Contac/>
         </div>

@@ -6,7 +6,7 @@ import OwlCarousel from 'react-owl-carousel';
 function Testimon(){
     return(
         <div className='testimon'>
-        <div className='testimon1'><h5>// TESTIMONIAL //</h5></div>
+        <div className='testimon1'><h5>{'// TESTIMONIAL //'}</h5></div>
         <div className='testimon2'><h1>Our Clients Say!</h1></div>
         <OwlCarousel className='owl-theme' loop margin={10} center autoplay responsive={{0: {
           items: 1,

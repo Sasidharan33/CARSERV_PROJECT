@@ -6,8 +6,8 @@ function Technicians(){
            <div className="serv-nav">
            <h1>Technicians</h1>
            <ol>
-            <li><a href="">HOME/</a></li>
-            <li><a href="">PAGES/</a></li>
+            <li><a href="/ho">HOME/</a></li>
+            <li><a href="/pa">PAGES/</a></li>
             <li>ABOUT</li>
            </ol>
            </div>

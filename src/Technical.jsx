@@ -9,7 +9,7 @@ import { FaInstagram } from "react-icons/fa";
 function Technical(){
     return(
         <div className='technical'>
-        <div className='technical1'><h6>// OUR TECHNICIANS //</h6></div>
+        <div className='technical1'><h6>{'// OUR TECHNICIANS //'}</h6></div>
         <div className='technical2'><h1>Our Expert Technicians</h1></div>
         <div className='technical3'>
           <img src={t1} alt="tech" />

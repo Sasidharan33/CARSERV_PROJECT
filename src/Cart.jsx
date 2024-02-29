@@ -45,7 +45,7 @@ const handledecrement = (item) =>{
             <img className="table-img" src={data.image} key={data.id} alt={data.name} />
             </td>
             <td className="table-cell4">
-            <h4>{data.name}</h4> 
+            <h4>{data.name}</h4>
             <h6>product details</h6> 
             </td>
             <td className="table-cell-1">

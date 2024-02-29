@@ -1,6 +1,5 @@
 import * as yup from 'yup';
 import { useFormik } from "formik";
-import { useEffect } from 'react';
 
 const schema = yup.object().shape({
     firstname:yup
@@ -39,7 +38,8 @@ const schema = yup.object().shape({
     .min(6,'postal/zip code must be 6 characters long'),
     payment:yup 
     .string()
-    .oneOf(["cash on delivery","upi/paypal","credit/debit card","emi"],'must select one of the payment method')
+    .required('must select one of the payment method')
+    .oneOf(['cashondelivery','upi/paypal','credit/debitcard','emi'],'must select one of the payment method')
 })
 
 function Buy({item,price,cart}){
@@ -67,7 +67,7 @@ function Buy({item,price,cart}){
         validationSchema:schema,
         onSubmit: (values) => {
              console.log("clicked",values)
-             setTimeout(values='',1000);    
+             setTimeout(values='',1000)   
         }
     })
     
@@ -221,13 +221,13 @@ function Buy({item,price,cart}){
                 </tr>
                 </thead>
      {
-        cart.map((data)=>(
+        cart.map((data,index)=>(
         
                 <tbody>
-                <tr className="buy-table">
-                    <td className="buy-cell"><h5 key={data.id}>{data.name} </h5></td>
-                    <td className="buy-cell2"><h5 key={data.id}>{data.quantity}</h5></td>
-                    <td className="buy-cell1"><h5 key={data.id}>{data.quantity * data.price}</h5></td>
+                <tr key={index} className="buy-table">
+                    <td className="buy-cell"><h5 >{data.name} </h5></td>
+                    <td className="buy-cell2"><h5>{data.quantity}</h5></td>
+                    <td className="buy-cell1"><h5 >{data.quantity * data.price}</h5></td>
                 </tr>
                 </tbody>
                 
@@ -251,11 +251,11 @@ function Buy({item,price,cart}){
      </div>
      <h1 className="buy-h3">PAYMENT</h1>
      <div className="buy-form3">
-       <input type="radio" name='payment' onChange={handleChange} onBlur={handleBlur} value="cash on delivery"  /> 
+       <input type="radio" name='payment' onChange={handleChange} onBlur={handleBlur} value="cashondelivery"  /> 
        <label htmlFor="cod"><h2>Cash On Delivery</h2></label><br />
        <input type="radio" name='payment' onChange={handleChange} onBlur={handleBlur} value="upi/paypal" />
        <label htmlFor="upi"><h2>Upi/Paypal</h2></label><br />
-       <input type="radio" name='payment' onChange={handleChange} onBlur={handleBlur} value="credit/debit card" />
+       <input type="radio" name='payment' onChange={handleChange} onBlur={handleBlur} value="credit/debitcard" />
        <label htmlFor="c/d"><h2>Credit/Debit Card</h2></label><br />
        <input type="radio" name='payment' onChange={handleChange} onBlur={handleBlur} value="emi" />
        <label htmlFor="c/d"><h2>EMI</h2></label><br />

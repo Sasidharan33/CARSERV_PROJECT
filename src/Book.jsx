@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
 import './Style.css'
-import { Formik, useFormik } from 'formik';
+import {  useFormik } from 'formik';
 import axios from 'axios';
 function Book(){
     const {values,handleChange,handleSubmit} = useFormik({
@@ -39,7 +38,7 @@ function Book(){
           <input className='input1' onChange={handleChange} name='name' value={values.name} type="text" placeholder='Your Name' />
           <input className='input2' onChange={handleChange} name='email' value={values.email} type="email" placeholder='Your Email' />
           <select name='service' value={values.service} onChange={handleChange}  className='input1' >
-            <option selected>select a service</option>
+            <option value="select a service" selected>select a service</option>
             <option value='service 3'>service 1</option>
             <option value='service 2'>service 2</option>
             <option value='service 3'>service 3</option>

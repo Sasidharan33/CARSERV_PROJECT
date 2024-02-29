@@ -8,8 +8,8 @@ function Booking(){
         <div className="about-nav">
            <h1>Booking</h1>
            <ol>
-            <li><a href="">HOME/</a></li>
-            <li><a href="">PAGES/</a></li>
+            <li>HOME/</li>
+            <li>PAGES/</li>
             <li>ABOUT</li>
            </ol>
     </div>

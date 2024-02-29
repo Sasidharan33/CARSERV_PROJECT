@@ -27,8 +27,7 @@ import { useState,useEffect } from 'react';
 import Buy from './Buy';
 import Login from './Login';
 import Signin from './Signin';
-import Product from './Product';
-
+import axios from 'axios';
 function App(){
   const [data,setdata] = useState([])
   const[user,setuser] = useState(null);
@@ -37,10 +36,26 @@ function App(){
   const[price,setprice]= useState(0)
   const[item,setitem]=useState(0)
   useEffect(() => {
-  const fetchdata = () =>{
+  const fetchdata = async () =>{
    const cartdata = window.localStorage.getItem('cartdata');
    const Cart = JSON.parse(cartdata)
    setcart(Cart)
+   try{
+    const productData = window.localStorage.getItem('productdata');
+      if (productData) {
+        const data = JSON.parse(productData);
+        setdata(data);
+        console.log(data)
+      } else {
+        const res = await axios.get('https://carservbe.onrender.com/api/products');
+        const newData = res.data;
+        setdata(newData);
+        window.localStorage.setItem('productdata', JSON.stringify(newData));
+      }
+ }
+ catch(err){
+  console.log("error in data fetching",err)
+ }
   }
   fetchdata();
 },[])
@@ -107,14 +122,14 @@ function App(){
     <Route path='/contact' element={user?<Contact/>:<Navigate to='/login'/>}/>
     <Route path='/about2' element={<About2/>}/>
     <Route path='/tech' element={<Technical/>}/>
-    <Route path='/dia' element={<Home data={data} setdata={setdata}/>} />
+    <Route path='/dia' element={<Home/>} />
     <Route path='/eng' element={<Serv2eng data={data} setdata={setdata} />}/>
     <Route path='/tir' element={<Serv2tir data={data} setdata={setdata}/>}/>
     <Route path='/oil' element={<Serv2oil data={data} setdata={setdata}/>}/>
     <Route path='/equip' element={<Equip/>}/>
     <Route path='/products/alloys' element={<Product0 data={data} setdata={setdata} warning={warning} handleclick={handleclick} />}/>
-    <Route path='/products/spoilers' element={<Product1 data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>}/>
-    <Route path='/products/exhaust' element={<Product2 data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>}/>
+    <Route path='/products1' element={<Product1 data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>}/>
+    <Route path='/products2' element={<Product2 data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>}/>
     <Route path='/cart' element={user?<Cart item={item} price={price} handlechange={handlechange} setcart={setcart} warning={warning} cart={cart}/>:<Navigate to='/login'/>}/>
     <Route path='/cart/buy' element={cart?<Buy item={item} setprice={setprice} setitem={setitem} setcart={setcart} price={price} cart={cart}/>:<Navigate to='/cart'/>}/>
     </Routes>
