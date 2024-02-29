@@ -32,7 +32,7 @@ function App(){
   const [loading, setLoading] = useState(true);
   const [data,setdata] = useState(null)
   const[user,setuser] = useState(null);
-  const[cart,setcart]=useState([])
+  const[cart,setcart]=useState([0])
   const [warning,setwarning]=useState(false)
   const[price,setprice]= useState(0)
   const[item,setitem]=useState(0)
@@ -41,6 +41,7 @@ function App(){
    const cartdata = window.localStorage.getItem('cartdata');
    const Cart = JSON.parse(cartdata)
    setcart(Cart)
+   setLoading(false)
    try{
     const productData = window.localStorage.getItem('productdata');
       if (productData) {
@@ -64,17 +65,21 @@ function App(){
 }, [])
   const handleitem =()=>{
     let ite=0;
+    if(!loading){
     cart.map((data)=>(
       ite +=data.quantity
     ))
     setitem(ite)
+    }
   }
   const handleprice=()=>{
     let ans=0;
+    if(!loading){
     cart.map((data)=>(
       ans += data.quantity * data.price
     ))
     setprice(ans)
+    }
   }
   useEffect(()=>{
     handleprice();
@@ -133,8 +138,8 @@ function App(){
     <Route path='/products/alloys' element={<Product0 data={data} setdata={setdata} warning={warning} handleclick={handleclick} />}/>
     <Route path='/products1' element={<Product1 loading={loading} data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>}/>
     <Route path='/products2' element={<Product2 loading={loading} data={data} setdata={setdata} warning={warning} handleclick={handleclick}/>}/>
-    <Route path='/cart' element={user?<Cart item={item} price={price} handlechange={handlechange} setcart={setcart} warning={warning} cart={cart}/>:<Navigate to='/login'/>}/>
-    <Route path='/cart/buy' element={cart?<Buy item={item} setprice={setprice} setitem={setitem} setcart={setcart} price={price} cart={cart}/>:<Navigate to='/cart'/>}/>
+    <Route path='/cart' element={user?<Cart item={item} loading={loading} price={price} handlechange={handlechange} setcart={setcart} warning={warning} cart={cart}/>:<Navigate to='/login'/>}/>
+    <Route path='/cart/buy' element={cart?<Buy item={item} loading={loading} setprice={setprice} setitem={setitem} setcart={setcart} price={price} cart={cart}/>:<Navigate to='/cart'/>}/>
     </Routes>
     </BrowserRouter> 
     </div>

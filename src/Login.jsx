@@ -20,14 +20,14 @@ const schema = yup.object().shape({
 })
 const Login = ({user,setUser}) => {
    const[token,settoken] = useState(null);
-  //  useEffect(() => {
-  //   const loggedinuser = window.localStorage.getItem('loggedinuser');
-  //   if(loggedinuser){
-  //   const user = JSON.parse(loggedinuser)
-  //   setUser(user);
-  //   settoken(user.token)
-  //   }
-  //  },[])
+   useEffect(() => {
+    const loggedinuser = window.localStorage.getItem('loggedinuser');
+    if(loggedinuser){
+    const user = JSON.parse(loggedinuser)
+    setUser(user);
+    settoken(user.token)
+    }
+   },[])
    const {values,handleChange,handleBlur,handleSubmit,errors} = useFormik({
     initialValues:{
       username:'',
