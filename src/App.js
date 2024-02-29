@@ -111,7 +111,7 @@ function App(){
     <div className="App">
     <BrowserRouter>
     <Navii/>
-    <Navbari user={user} setUser={setuser} size={cart.length}/>
+    <Navbari user={user} setUser={setuser} cart={cart}/>
     <Routes>
     <Route path='/' index element={user ?<Home data={data} loading={loading} setdata={setdata} warning={warning} handleclick={handleclick}/>:<Navigate to='/login'/>}/>
     <Route exact path='/login' element={<Login user={user} setUser={setuser} />}/>

@@ -5,7 +5,7 @@ import {NavLink,Link} from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { IoCarSport } from "react-icons/io5";
 import { IoMdCart } from "react-icons/io";
-function Navbari({size}){
+function Navbari({cart}){
     return(
 <div className='navbari'>
 <Navbar expand="lg" className="bg-body-tertiary">
@@ -25,7 +25,7 @@ function Navbari({size}){
         {/* <NavLink  to="/contact" >PRODUCTS</NavLink> */}
         <NavLink to='/cart' className='cart-link'>
         <div className='nav-cart'>
-           CART<IoMdCart /><div className='cart-size'>{size}</div>
+           CART<IoMdCart /><div className='cart-size'>{cart.length}</div>
            </div>
         </NavLink>
       </Nav>
