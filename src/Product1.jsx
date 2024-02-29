@@ -14,8 +14,6 @@ import Book from './Book';
 import Testimon from './Testimon';
 import Contac from './Contac';
 function Product1({handleclick,warning,data}){
-  
- 
     return(
         <div>
             <Home1/>

@@ -36,7 +36,7 @@ function App(){
   const[price,setprice]= useState(0)
   const[item,setitem]=useState(0)
   useEffect(() => {
-  const fetchdata = async (event) =>{
+  const fetchdata = async () =>{
    const cartdata = window.localStorage.getItem('cartdata');
    const Cart = JSON.parse(cartdata)
    setcart(Cart)
@@ -47,7 +47,6 @@ function App(){
         setdata(data);
         console.log(data)
       } else {
-        event.preventDefault()
         const res = await axios.get('https://carservbe.onrender.com/api/products');
         const newData = res.data;
         setdata(newData);
