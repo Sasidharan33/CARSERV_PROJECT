@@ -4,7 +4,6 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import  axios from 'axios';
 import {NavLink,Navigate} from "react-router-dom";
-import Home from './Home';
 const schema = yup.object().shape({
    username:yup 
    .string()
@@ -21,14 +20,14 @@ const schema = yup.object().shape({
 })
 const Login = ({user,setUser}) => {
    const[token,settoken] = useState(null);
-   useEffect(() => {
-    const loggedinuser = window.localStorage.getItem('loggedinuser');
-    if(loggedinuser){
-    const user = JSON.parse(loggedinuser)
-    setUser(user);
-    settoken(user.token)
-    }
-   },[])
+  //  useEffect(() => {
+  //   const loggedinuser = window.localStorage.getItem('loggedinuser');
+  //   if(loggedinuser){
+  //   const user = JSON.parse(loggedinuser)
+  //   setUser(user);
+  //   settoken(user.token)
+  //   }
+  //  },[])
    const {values,handleChange,handleBlur,handleSubmit,errors} = useFormik({
     initialValues:{
       username:'',
@@ -46,6 +45,7 @@ const Login = ({user,setUser}) => {
         setTimeout(values.username='',
         values.email='',
         values.password='',1000)
+        alert("welcome")
       }
       catch(error){
         alert(error.response.data.error)

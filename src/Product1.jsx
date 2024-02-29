@@ -1,6 +1,6 @@
 import cc1 from './images/bal.mp4'
 import { IoCarSport } from "react-icons/io5";
-import React,{useEffect} from 'react';
+import React from 'react';
 import {NavLink} from "react-router-dom";
 import { IoMdCart } from "react-icons/io";
 import { FaShoppingBag } from "react-icons/fa";
@@ -13,24 +13,8 @@ import Technical from './Technical';
 import Book from './Book';
 import Testimon from './Testimon';
 import Contac from './Contac';
-import axios from 'axios';
-function Product1({handleclick,warning,data,setdata}){
-    useEffect(() => {
-        const fetchdata = async () => {
-        try{
-      const productData = window.localStorage.getItem('productdata');
-      if (productData) {
-        const data = JSON.parse(productData);
-        setdata(data);
-        console.log(data)
-      } 
-    }
-        catch(err){
-            console.log("error in fetch data",err)
-        }
-    }
-    fetchdata()
-    },[])
+function Product1({handleclick,warning,data}){
+  
  
     return(
         <div>
