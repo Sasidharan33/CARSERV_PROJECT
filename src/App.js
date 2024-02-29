@@ -41,7 +41,6 @@ function App(){
    const cartdata = window.localStorage.getItem('cartdata');
    const Cart = JSON.parse(cartdata)
    setcart(Cart)
-   setLoading(false)
    try{
     const productData = window.localStorage.getItem('productdata');
       if (productData) {
@@ -65,7 +64,7 @@ function App(){
 }, [])
   const handleitem =()=>{
     let ite=0;
-    if(!loading){
+    if(cart !==null){
     cart.map((data)=>(
       ite +=data.quantity
     ))
@@ -74,7 +73,7 @@ function App(){
   }
   const handleprice=()=>{
     let ans=0;
-    if(!loading){
+    if(cart !==null){
     cart.map((data)=>(
       ans += data.quantity * data.price
     ))
