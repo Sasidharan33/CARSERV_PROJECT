@@ -32,7 +32,7 @@ function App(){
   const [loading, setLoading] = useState(true);
   const [data,setdata] = useState(null)
   const[user,setuser] = useState(null);
-  const[cart,setcart]=useState([0])
+  const[cart,setcart]=useState([])
   const [warning,setwarning]=useState(false)
   const[price,setprice]= useState(0)
   const[item,setitem]=useState(0)
