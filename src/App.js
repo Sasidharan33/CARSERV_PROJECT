@@ -98,8 +98,10 @@ function App(){
     }, 2000);
     return;
     }
+    if(data !== null){
     setcart([...cart,data])
     window.localStorage.setItem('cartdata',JSON.stringify([...cart,data]))
+    }
   }
   const handlechange= (item,d)=>{
     let ind= -1;

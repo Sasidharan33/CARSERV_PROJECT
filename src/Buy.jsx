@@ -14,6 +14,7 @@ const schema = yup.object().shape({
     .string()
     .required('gmail is required')
     .email('invalid email format'),
+    deliveredAddress:yup.object().shape({
     country:yup 
     .string()
     .required('country is required'),
@@ -36,6 +37,7 @@ const schema = yup.object().shape({
     .number()
     .required('postal/zip code is required')
     .min(6,'postal/zip code must be 6 characters long'),
+    }),
     payment:yup 
     .string()
     .required('must select one of the payment method')
@@ -43,7 +45,7 @@ const schema = yup.object().shape({
 })
 
 function Buy({item,price,cart}){
-    const {values,handleChange,handleBlur,handleSubmit,errors} = useFormik({
+    const {values,handleChange,handleBlur,isSubmitting,handleSubmit,errors} = useFormik({
         initialValues:{
             firstname:'',
             lastname:'',
@@ -54,14 +56,15 @@ function Buy({item,price,cart}){
             tprice:price,
             payment:'',
             products:[cart],
-            address:[{
+            deliveredAddress:{
             country:'',
             building:'',
             streetname:'',
             city_village:'',
             district:'',
             postal_zip:''
-            }]
+            }
+
 
         },
         validationSchema:schema,
@@ -69,6 +72,7 @@ function Buy({item,price,cart}){
              console.log("clicked",values)
              setTimeout(()=>{
              actions.setSubmitting(false)
+             actions.resetForm()
              },1000)  
         }
     })
@@ -83,13 +87,13 @@ function Buy({item,price,cart}){
      
      <label htmlFor="" className="lab1"><h5>Country *</h5></label><br/>
         <input type="text"
-         name="country"
-         value={values.country}
+         name="deliveredAddress.country"
+         value={values.deliveredAddress.country}
          className="inp1"
          onChange={handleChange}
          onBlur={handleBlur}
          /><br />
-        <p className="valide">{errors.country}</p>
+        <p className="valide">{errors.deliveredAddress?.country}</p>
         <div className="username">
         <div className="f1name">
         <label htmlFor="" className="lab2"><h5>First Name *</h5></label><br/>
@@ -144,60 +148,60 @@ function Buy({item,price,cart}){
         <label htmlFor="" className="lab6"><h5>address *</h5></label><br/>
         <div className="useraddress1">
         <input placeholder="Building/House No" 
-        value={values.house}  
-        name="building" 
+        value={values.deliveredAddress.building}  
+        name="deliveredAddress.building" 
         type="text" 
         className="inp6"
         onChange={handleChange}
         onBlur={handleBlur}
         /><br />
-        <p className="valide">{errors.building}</p>
+        <p className="valide">{errors.deliveredAddress?.building}</p>
         </div>
         <div className="useraddress2">
         <input placeholder="street name" 
-        value={values.streetname} 
+        value={values.deliveredAddress.streetname} 
         type="text"  
-        name="streetname" 
+        name="deliveredAddress.streetname" 
         className="inp7"
         onChange={handleChange}
         onBlur={handleBlur}
         /><br />
-        <p className="valide">{errors.streetname}</p>
+        <p className="valide">{errors.deliveredAddress?.streetname}</p>
         </div>
         <div className="useraddress3">
         <input placeholder="City/Village Name" 
-        value={values.city_village} 
-        name="city_village" 
+        value={values.deliveredAddress.city_village} 
+        name="deliveredAddress.city_village" 
         type="text" 
         className="inp8"
         onChange={handleChange}
         onBlur={handleBlur}
         /><br />
-        <p className="valide">{errors.city_village}</p>
+        <p className="valide">{errors.deliveredAddress?.city_village}</p>
         </div>
         </div>
         <div className="userdist">
         <div className="userdist1">
         <label htmlFor="" className="lab9"><h5>Distric *</h5></label><br/>
         <input type="text" 
-        name="district" 
-        value={values.district}  
+        name="deliveredAddress.district" 
+        value={values.deliveredAddress.district}  
         className="inp9"
         onChange={handleChange}
         onBlur={handleBlur}
         /><br />
-        <p className="valide">{errors.district}</p>
+        <p className="valide">{errors.deliveredAddress?.district}</p>
         </div>
         <div className="userdist2">
         <label htmlFor="" className="lab10"><h5>Postal/zip *</h5></label><br/>
         <input type="text" 
-        value={values.postal_zip}  
-        name="postal_zip" 
+        value={values.deliveredAddress.postal_zip}  
+        name="deliveredAddress.postal_zip" 
         className="inp10"
         onChange={handleChange}
         onBlur={handleBlur}
         /><br />
-        <p className="valide">{errors.postal_zip}</p>
+        <p className="valide">{errors.deliveredAddress?.postal_zip}</p>
         </div>
         </div>
         <label htmlFor="" className="lab11"><h5>Order Notes </h5></label><br/>
@@ -262,7 +266,7 @@ function Buy({item,price,cart}){
        <label htmlFor="c/d"><h2>EMI</h2></label><br />
        <p className="valide">{errors.payment}</p>
      </div>
-     <button type="submit" className="buy-h4">
+     <button type="submit" disabled={isSubmitting} className="buy-h4">
      <h3>Buy Now</h3>
      </button>
      </form>

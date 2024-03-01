@@ -28,23 +28,24 @@ const Login = ({user,setUser}) => {
     settoken(user.token)
     }
    },[])
-   const {values,handleChange,handleBlur,handleSubmit,errors} = useFormik({
+   const {values,handleChange,isSubmitting,handleBlur,handleSubmit,errors} = useFormik({
     initialValues:{
       username:'',
       email:'',
       password:''
     },
     validationSchema:schema,
-    onSubmit:async (values) => {
+    onSubmit:async (values,actions) => {
       try{
         const res = await axios.post('https://carservbe.onrender.com/api/login',values);
         const user = res.data;
         settoken(user.token);
         setUser(user)
         window.localStorage.setItem('loggedinuser',JSON.stringify(user));
-        setTimeout(values.username='',
-        values.email='',
-        values.password='',1000)
+        setTimeout(()=> {
+          actions.resetForm()
+          actions.setSubmitting(false)
+        },1000)
         alert("welcome")
       }
       catch(error){
