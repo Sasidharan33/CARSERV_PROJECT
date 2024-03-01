@@ -70,12 +70,7 @@ function Buy({item,price,cart,loading}){
              setTimeout(values='',1000)   
         }
     })
-    if(loading){
-        return(
-            <div>loading...</div>
-        )
-    }
-    else{
+    
     return(
         <div className="buy-form">
             <form onSubmit={handleSubmit} >
@@ -271,5 +266,4 @@ function Buy({item,price,cart,loading}){
         </div>
     )
     }
-}
 export default Buy

@@ -25,12 +25,7 @@ const handledecrement = (item) =>{
     )
     );
 } 
-   if(loading){
-    return(
-      <div>loading...</div>
-    )
-   }
-   else{
+   
     return(
         <div className="cart-head">
           <div className="cart-head1">
@@ -105,5 +100,5 @@ const handledecrement = (item) =>{
         </div>
     )
       }
-}
+
 export default Cart
