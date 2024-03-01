@@ -47,7 +47,6 @@ function App(){
         const data = JSON.parse(productData);
         setdata(data);
         setLoading(false);
-        console.log(data)
       } else {
         const res = await axios.get('https://carservbe.onrender.com/api/products');
         const newData = res.data;
@@ -86,10 +85,12 @@ function App(){
   })
   const handleclick = (data)=>{
     let ispresent=false;
+    console.log(data)
+    if(cart !== null){
     cart.forEach((product)=>{
       if(data.id==product.id)
       ispresent=true;
-    })
+    })}
     if(ispresent){
     setwarning(true)
     setTimeout(() => {

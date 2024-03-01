@@ -65,9 +65,11 @@ function Buy({item,price,cart}){
 
         },
         validationSchema:schema,
-        onSubmit: (values) => {
+        onSubmit: (values,actions) => {
              console.log("clicked",values)
-             setTimeout(values='',1000)   
+             setTimeout(()=>{
+             actions.setSubmitting(false)
+             },1000)  
         }
     })
     if(cart !== null)
