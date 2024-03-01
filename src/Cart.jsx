@@ -1,7 +1,7 @@
 import {NavLink} from "react-router-dom";
 import { TiDeleteOutline } from "react-icons/ti";
 import { FaArrowLeft } from "react-icons/fa";
-const Cart= ({cart,setcart,item,price,loading}) => {
+const Cart= ({cart,setcart,item,price}) => {
   
 const handleremove = (id) =>{
   alert("want to remove this item")
@@ -25,6 +25,7 @@ const handledecrement = (item) =>{
     )
     );
 } 
+if(cart !==null){
    
     return(
         <div className="cart-head">
@@ -99,6 +100,7 @@ const handledecrement = (item) =>{
           </div>
         </div>
     )
+      }
       }
 
 export default Cart

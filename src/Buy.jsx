@@ -42,7 +42,7 @@ const schema = yup.object().shape({
     .oneOf(['cashondelivery','upi/paypal','credit/debitcard','emi'],'must select one of the payment method')
 })
 
-function Buy({item,price,cart,loading}){
+function Buy({item,price,cart}){
     const {values,handleChange,handleBlur,handleSubmit,errors} = useFormik({
         initialValues:{
             firstname:'',
@@ -70,6 +70,7 @@ function Buy({item,price,cart,loading}){
              setTimeout(values='',1000)   
         }
     })
+    if(cart !== null)
     
     return(
         <div className="buy-form">
