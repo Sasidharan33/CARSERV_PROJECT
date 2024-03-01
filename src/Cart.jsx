@@ -101,6 +101,11 @@ if(cart !==null){
         </div>
     )
       }
+      else{
+        return(
+          <div>cart is empty</div>
+        )
+      }
       }
 
 export default Cart

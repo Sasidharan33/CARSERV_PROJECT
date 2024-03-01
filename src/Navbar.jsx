@@ -25,7 +25,7 @@ function Navbari({cart}){
         {/* <NavLink  to="/contact" >PRODUCTS</NavLink> */}
         <NavLink to='/cart' className='cart-link'>
         <div className='nav-cart'>
-           CART<IoMdCart /><div className='cart-size'></div>
+           CART<IoMdCart /><div className='cart-size'>{cart == null ? 0 :cart.length}</div>
            </div>
         </NavLink>
       </Nav>
