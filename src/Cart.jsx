@@ -103,7 +103,7 @@ if(cart !==null){
       }
       else{
         return(
-          <div>cart is empty</div>
+          <div><h1>YOUR CART IS EMPTY</h1></div>
         )
       }
       }
