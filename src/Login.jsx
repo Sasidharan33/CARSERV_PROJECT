@@ -102,7 +102,7 @@ const Login = ({user,setUser}) => {
   <br />
   <span>{errors.password}</span>
   <br />
-  <button type='submit' className='log-button'>LOGIN</button>
+  <button type='submit' disabled={isSubmitting} className='log-button'>LOGIN</button>
   <br />
   <span className='sign'><NavLink to='/signin'>SIGNIN</NavLink></span>   <span className='forgot'>Forgot Password?</span>
 </form>

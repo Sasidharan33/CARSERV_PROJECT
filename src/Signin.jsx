@@ -21,22 +21,23 @@ const schema = yup.object().shape({
  })
 function Signin() {
   const[registered,setregisterd] = useState(false)
-   const {values,handleChange,handleBlur,handleSubmit,errors} = useFormik({
+   const {values,handleChange,isSubmitting,handleBlur,handleSubmit,errors} = useFormik({
     initialValues:{
       username:'',
       email:'',
       password:''
     },
     validationSchema:schema,
-    onSubmit:async (values) => {
+    onSubmit:async (values,actions) => {
       try{
       const res = await axios.post('https://carservbe.onrender.com/api/users',values);
       if(res.statusText='OK'){
         console.log(res)
         setregisterd(true)
-        setTimeout(values.username='',
-        values.email='',
-        values.password='',1000)
+        setTimeout(() => {
+          actions.resetForm()
+          actions.setSubmitting(false)
+        },1000)
       }
     }
     catch(error){
@@ -92,7 +93,7 @@ function Signin() {
               <br />
               <span>{errors.password}</span>
               <br />
-              <button type='submit' className='log-button'>SIGNIN</button>
+              <button type='submit' disabled={isSubmitting} className='log-button'>SIGNIN</button>
               <br />
               <span className='sign'>Already a user?<NavLink to='/login'>LOGIN</NavLink></span>   
             </form>

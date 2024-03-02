@@ -40,7 +40,7 @@ function App(){
   const fetchdata = async () =>{
    const cartdata = window.localStorage.getItem('cartdata');
    const Cart = JSON.parse(cartdata)
-   setcart(Cart)
+   setcart(Cart || [])
    try{
     const productData = window.localStorage.getItem('productdata');
       if (productData) {
@@ -63,7 +63,7 @@ function App(){
 }, [])
   const handleitem =()=>{
     let ite=0;
-    if(cart !==null){
+    if(cart !==null && Array.isArray(cart)){
     cart.map((data)=>(
       ite +=data.quantity
     ))
@@ -72,7 +72,7 @@ function App(){
   }
   const handleprice=()=>{
     let ans=0;
-    if(cart !==null){
+    if(cart !==null && Array.isArray(cart)){
     cart.map((data)=>(
       ans += data.quantity * data.price
     ))
@@ -83,26 +83,36 @@ function App(){
     handleprice();
     handleitem();
   })
-  const handleclick = (data)=>{
-    let ispresent=false;
-    console.log(data)
-    if(cart !== null){
-    cart.forEach((product)=>{
-      if(data.id==product.id)
-      ispresent=true;
-    })}
-    if(ispresent){
-    setwarning(true)
-    setTimeout(() => {
-      setwarning(false)
-    }, 2000);
-    return;
-    }
-    if(data !== null){
-    setcart([...cart,data])
-    window.localStorage.setItem('cartdata',JSON.stringify([...cart,data]))
-    }
+  const handleclick = (data) => {
+    let isPresent = false;
+    console.log(data);
+    
+    // Ensure cart is initialized properly
+    let cartData = JSON.parse(window.localStorage.getItem('cartdata')) || [];
+    if (!Array.isArray(cartData)) {
+      // If not an array, initialize cartData as an empty array
+      cartData = [];
   }
+    
+    cartData.forEach((product) => {
+        if (data.id === product.id) {
+            isPresent = true;
+        }
+    });
+
+    if (isPresent) {
+        setwarning(true);
+        setTimeout(() => {
+            setwarning(false);
+        }, 2000);
+        return;
+    }
+
+    // Update cart state and localStorage separately
+    const newCart = [...cartData, data];
+    setcart(newCart);
+    window.localStorage.setItem('cartdata', JSON.stringify(newCart));
+}
   const handlechange= (item,d)=>{
     let ind= -1;
     cart.forEach((data,index) => {
