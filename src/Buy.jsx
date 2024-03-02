@@ -1,5 +1,7 @@
 import * as yup from 'yup';
 import { useFormik } from "formik";
+import  axios from 'axios';
+
 
 const schema = yup.object().shape({
     firstname:yup
@@ -55,7 +57,7 @@ function Buy({item,price,cart}){
             items:item,
             tprice:price,
             payment:'',
-            products:[cart],
+            products:cart,
             deliveredAddress:{
             country:'',
             building:'',
@@ -68,12 +70,19 @@ function Buy({item,price,cart}){
 
         },
         validationSchema:schema,
-        onSubmit: (values,actions) => {
-             console.log("clicked",values)
-             setTimeout(()=>{
-             actions.setSubmitting(false)
-             actions.resetForm()
-             },1000)  
+        onSubmit:async (values,actions) => {
+             console.log("clicked",values);
+            try{
+              const res = await axios.post('https://carservbe.onrender.com/api/orders',values);
+              console.log(res);
+              setTimeout(() => {
+              actions.resetForm();
+              },1000)
+              alert('order placed suceessfully')
+            }
+            catch(err){
+                console.log(err)
+            }
         }
     })
     if(cart !== null)
