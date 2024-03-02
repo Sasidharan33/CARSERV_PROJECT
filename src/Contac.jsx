@@ -16,16 +16,16 @@ function Contac(){
           <p><FaEnvelope className='iconsb'/>   info@example.com</p>
           <div className='linkss'>
             <div  className='iconsa'>
-            <a href=""><FaTwitter className='icons' /></a>
+            <a href="https://twitter.com/?lang=en-in"><FaTwitter className='icons' /></a>
             </div>
             <div className='iconsa'>
-            <a href="" ><FaFacebookF className='icons' /></a>
+            <a href="https://www.facebook.com/" ><FaFacebookF className='icons' /></a>
             </div>
             <div  className='iconsa'>
-            <a href=""><FaYoutube className='icons' /></a>
+            <a href="https://www.youtube.com/"><FaYoutube className='icons' /></a>
             </div>
             <div  className='iconsa'>
-            <a href=""><FaLinkedinIn className='icons' /></a>
+            <a href="https://www.linkedin.com/feed/"><FaLinkedinIn className='icons' /></a>
             </div>
           </div>
           </div>

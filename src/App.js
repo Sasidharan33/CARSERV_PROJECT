@@ -42,18 +42,20 @@ function App(){
    const Cart = JSON.parse(cartdata)
    setcart(Cart || [])
    try{
-    const productData = window.localStorage.getItem('productdata');
-      if (productData) {
-        const data = JSON.parse(productData);
-        setdata(data);
-        setLoading(false);
-      } else {
+    // const productData = window.localStorage.getItem('productdata');
+    //   if (productData) {
+    //     const data = JSON.parse(productData);
+    //     console.log(data)
+    //     setdata(data);
+    //     setLoading(false);
+    //   } else {
         const res = await axios.get('https://carservbe.onrender.com/api/products');
         const newData = res.data;
+        console.log(newData)
         setdata(newData);
         setLoading(false);
         window.localStorage.setItem('productdata', JSON.stringify(newData));
-      }
+      // }
  }
  catch(err){
   console.log("error in data fetching",err)

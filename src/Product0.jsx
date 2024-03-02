@@ -13,7 +13,6 @@ import Technical from './Technical';
 import Book from './Book';
 import Testimon from './Testimon';
 import Contac from './Contac';
-import axios from 'axios';
 function Product0({handleclick,warning,data}){
     useEffect(()=>{
        console.log(data)

@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import { IoMdCart } from "react-icons/io";
 import { FaShoppingBag } from "react-icons/fa";
 
+
 function Product ({handleclick,warning,data,loading}){
   if(loading){
     return(
